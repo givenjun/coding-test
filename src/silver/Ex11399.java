@@ -1,7 +1,6 @@
 package silver;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class Ex11399 {
     public static void main(String[] args) throws IOException {
@@ -9,20 +8,39 @@ public class Ex11399 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int N = Integer.parseInt(br.readLine());
-        String[] str = br.readLine().split(" ");
-        int[] list = new int[N];
-        int cnt = 0;
+        String[] S = br.readLine().split(" ");
+        int[] A = new int[N];
+        int[] sum = new int[N];
+        int total = 0;
+        
         for (int i = 0; i < N; i++) {
-            list[i] = Integer.parseInt(str[i]);
+            A[i] = Integer.parseInt(S[i]);
         }
-        Arrays.sort(list);
+        
+        for (int i = 1; i < N; i++) {
+            int tmp = A[i];
+            int idx = i;
+            for (int j = 0; j < i; j++) {
+                if (tmp < A[j]) {
+                    idx = j;
+                    break;
+                }
+            }
+            for (int j = i; j > idx; j--) {
+                A[j] = A[j - 1];
+            }
+            A[idx] = tmp;
+        }
+        
+        for (int i = 0; i < N; i++) {
+            if (i == 0) sum[i] = A[i];
+            else sum[i] = sum[i-1] + A[i];
+            total += sum[i];
+        }
 
-        for (int i = 0; i < N; i++) {
-            cnt += list[i] * (N - i);
-            // bw.write(list[i] + " * " + (N - i) + " = " + (list[i] * (N - i)) +"\n");
-        }
-        bw.write(cnt+"");
+        bw.write(total + "");
         bw.flush();
         bw.close();
+
     }
 }
