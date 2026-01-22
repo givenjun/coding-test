@@ -1,27 +1,22 @@
 package silver;
 
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
 import java.io.*;
+import java.util.Arrays;
 
 public class ex2751 {
-    public static void main(String[] args) throws IOException{
-        
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        int n = Integer.parseInt(bf.readLine());
-        ArrayList<Integer> List = new ArrayList<>();
         
-        for(int i = 0; i < n; i++) {
-            List.add(Integer.parseInt(bf.readLine()));
+        int N = Integer.parseInt(br.readLine());
+        int[] A = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            A[i] = Integer.parseInt(br.readLine());
         }
-
-        List.sort(null);
-
-        for(int i = 0; i < n; i++) {
-            bw.write(List.get(i) + "\n");
+        Arrays.sort(A);
+        for (int i = 0; i < N; i++) {
+            bw.write(A[i] + "\n");
         }
         bw.flush();
         bw.close();
