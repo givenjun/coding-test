@@ -31,7 +31,7 @@ public class SelectionSort {
             int min = Integer.MAX_VALUE;
             int pos = 0;
             for (int j = i; j < len; j++) {
-                if (min >= a[j]) {
+                if (min > a[j]) {
                     min = a[j];
                     pos = j;
                 }

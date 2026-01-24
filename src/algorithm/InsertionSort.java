@@ -30,7 +30,7 @@ public class InsertionSort {
             int tmp = a[i];
             int pos = i;
             for (int j = i - 1; j >= 0; j--) {
-                if (tmp <= a[j]) {
+                if (tmp < a[j]) {
                     a[j + 1] = a[j];
                     pos = j;
                 }
